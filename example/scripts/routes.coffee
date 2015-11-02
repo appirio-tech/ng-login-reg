@@ -18,6 +18,11 @@ config = ($stateProvider) ->
     title       : 'forgot'
     templateUrl : 'views/forgot.example.html'
 
+  states['reset'] =
+    url         : '/reset'
+    title       : 'reset'
+    templateUrl : 'views/reset.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 
