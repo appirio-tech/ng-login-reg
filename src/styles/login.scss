@@ -2,7 +2,11 @@
 
 login {
   display: block;
+  text-align: center;
+
   form {
+    margin-top: $margin-small;
+
     input, button {
       margin-top: $margin-small;
 

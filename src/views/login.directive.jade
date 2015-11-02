@@ -1,4 +1,4 @@
-p.error(ng-show="vm.error") We can't find an account with the email / password you entered. Please try again.
+p.error(ng-class="{ invisible: !vm.error }") We can't find an account with the email / password you entered. Please try again.
 
 form.flex.column.middle(ng-submit="vm.submit()" method="post")
   input.wide(type="text" ng-model="vm.username" required=true placeholder="username")
