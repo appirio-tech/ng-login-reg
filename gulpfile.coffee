@@ -7,7 +7,7 @@ configs.templateCache.push
   fileName: 'templates.js'
   files : ['.tmp/views/*.directive.html']
   root  : 'views/'
-  module: 'appirio-tech-ng-submissions'
+  module: 'appirio-tech-ng-login-reg'
 
 configs.templateCache.push
   fileName: 'example-templates.js'
