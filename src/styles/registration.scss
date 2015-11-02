@@ -3,10 +3,6 @@
 registration {
   display: block;
 
-  .subheader {
-    font-size: $font-size;
-  }
-
   .first-name, .last-name {
     width: 50%;
     float: left;
@@ -38,17 +34,11 @@ registration {
   }
 
   form {
-    text-align: left;
     margin-top: $margin;
-    max-width : 350px;
     text-align: center;
 
     input, button {
       margin-top: $margin-small;
     }
-  }
-
-  .reminder {
-    margin-top: $margin;
   }
 }

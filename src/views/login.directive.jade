@@ -1,25 +1,6 @@
-layout-header.elevated(role="banner")
+form.flex.column.middle(ng-submit="vm.submit()" method="post")
+  input.wide(type="text" ng-model="vm.username" required=true placeholder="username")
 
-main.layout-main.login.flex.column.center("role"="main" layout-main=true flush-height=true)
-  h1 Welcome back to appirio
+  input.wide(type="password" ng-model="vm.password" required=true placeholder="password")
 
-  p.subheader.secondary Let's start building your app.  Login or create an account below to begin.
-
-  p.error(ng-show="vm.error") We can't find an account with the email / password you entered. Please try again.
-
-
-  form(ng-submit="vm.submit()" method="post")
-    input.wide(type="text" ng-model="vm.username" required=true placeholder="username")
-
-    input.wide(type="password" ng-model="vm.password" required=true placeholder="password")
-
-    button.action(type="submit") login
-
-    ul.reminders
-      li
-        p Don't have an account? <a ui-sref="register">Sign Up</a>
-
-      li
-        p Forgot your password? <a ui-sref="forgot">Reset It</a>
-
-layout-footer
+  button.action(type="submit") login

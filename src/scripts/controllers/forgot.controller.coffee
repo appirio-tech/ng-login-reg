@@ -12,4 +12,4 @@ ForgotPasswordController.$inject = [
   '$state'
 ]
 
-angular.module('app.auth').controller 'ForgotPasswordController', ForgotPasswordController
+angular.module('appirio-tech-ng-login-reg').controller 'ForgotPasswordController', ForgotPasswordController

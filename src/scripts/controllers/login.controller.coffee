@@ -1,7 +1,7 @@
 'use strict'
 
 LoginController = ($rootScope, $location, $state, AuthService, UserV3Service) ->
-  var vm      = this
+  vm          = this
   vm.title    = 'Login'
   vm.username = ''
   vm.password = ''
@@ -23,7 +23,7 @@ LoginController = ($rootScope, $location, $state, AuthService, UserV3Service) ->
     vm.error = true
 
   loginSuccess = ->
-    vm.error = false;
+    vm.error = false
 
     UserV3Service.loadUser().then (currentUser) ->
       urlToken = $location.search()
@@ -58,6 +58,6 @@ LoginController.$inject = [
   'UserV3Service'
 ]
 
-angular.module('ng-login-reg').controller 'LoginController', LoginController
+angular.module('appirio-tech-ng-login-reg').controller 'LoginController', LoginController
 
 

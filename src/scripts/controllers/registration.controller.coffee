@@ -51,4 +51,4 @@ RegisterController.$inject = [
   'UserV3Service'
 ]
 
-angular.module('app.auth').controller 'RegisterController', RegisterController
+angular.module('appirio-tech-ng-login-reg').controller 'RegisterController', RegisterController

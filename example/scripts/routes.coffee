@@ -9,12 +9,12 @@ config = ($stateProvider) ->
     templateUrl : 'views/login.example.html'
 
   states['registration'] =
-    url         : '/'
+    url         : '/registration'
     title       : 'registration'
     templateUrl : 'views/registration.example.html'
 
   states['forgot'] =
-    url         : '/'
+    url         : '/forgot'
     title       : 'forgot'
     templateUrl : 'views/forgot.example.html'
 
