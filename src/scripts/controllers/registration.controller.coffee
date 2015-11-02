@@ -1,6 +1,6 @@
 'use strict'
 
-RegisterController = ($state, AuthService, UserV3Service) ->
+RegistrationController = ($state, AuthService, UserV3Service) ->
   vm              = this
   vm.title        = 'Register'
   vm.username     = ''
@@ -45,10 +45,10 @@ RegisterController = ($state, AuthService, UserV3Service) ->
 
   activate()
 
-RegisterController.$inject = [
+RegistrationController.$inject = [
   '$state'
   'AuthService'
   'UserV3Service'
 ]
 
-angular.module('appirio-tech-ng-login-reg').controller 'RegisterController', RegisterController
+angular.module('appirio-tech-ng-login-reg').controller 'RegistrationController', RegistrationController
