@@ -41,4 +41,11 @@ registration {
       margin-top: $margin-small;
     }
   }
+
+  .thanks {
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    line-height: $line-height-big;
+  }
 }
