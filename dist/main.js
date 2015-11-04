@@ -11,7 +11,9 @@
 angular.module("appirio-tech-ng-login-reg").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot-password.directive.html","<p class=\"success\">Thanks, we\'ve emailed you a reset link. Please check your inbox. If you still need help, please contact us at support@topcoder.com</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"text\" ng-model=\"vm.email\" required=\"required\" placeholder=\"email\" class=\"wide\"/><button type=\"submit\" class=\"action\">send reset link</button></form>");
 $templateCache.put("views/login.directive.html","<p ng-class=\"{ invisible: !vm.error }\" class=\"error\">We can\'t find an account with the email / password you entered. Please try again.</p><form ng-submit=\"vm.submit()\" method=\"post\" class=\"flex column middle\"><input type=\"text\" ng-model=\"vm.username\" required=\"required\" placeholder=\"username\" class=\"wide\"/><input type=\"password\" ng-model=\"vm.password\" required=\"required\" placeholder=\"password\" class=\"wide\"/><button type=\"submit\" class=\"action\">login</button></form>");
 $templateCache.put("views/registration.directive.html","<p ng-class=\"{ invisible: !vm.error }\" class=\"error\">{{ vm.errorMessage }}</p><form ng-submit=\"vm.submit()\"><div class=\"first-name\"><input type=\"text\" name=\"first-name\" ng-model=\"vm.firstName\" required=\"required\" placeholder=\"first name\" class=\"widest\"/></div><div class=\"last-name\"><input type=\"text\" name=\"last-name\" ng-model=\"vm.lastName\" required=\"required\" placeholder=\"last name\" class=\"widest\"/></div><div class=\"organization\"><input type=\"text\" name=\"organization\" ng-model=\"vm.organization\" required=\"required\" placeholder=\"organization\" class=\"widest\"/></div><hr/><input type=\"text\" name=\"username\" ng-model=\"vm.username\" required=\"required\" placeholder=\"username\" class=\"widest\"/><input type=\"password\" name=\"password\" ng-model=\"vm.password\" required=\"required\" placeholder=\"password\" class=\"widest\"/><input type=\"email\" name=\"email\" ng-model=\"vm.email\" required=\"required\" placeholder=\"email\" class=\"widest\"/><button type=\"submit\" class=\"action submit\">Register</button></form><p class=\"thanks\">Thanks for creating an account.  We\'ve sent you a confirmation link.  Please check your email and click the lick to activate your account. If you can\'t find the message please contact <a href=\"mailto:support@asp.com\">support@asp.com</a></p>");
-$templateCache.put("views/reset-password.directive.html","<p class=\"success\">Your password has been updated.</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"password\" ng-model=\"vm.email\" required=\"required\" placeholder=\"New Password\" class=\"wide\"/><button type=\"submit\" class=\"action\">reset password</button></form>");}]);
+$templateCache.put("views/reset-password.directive.html","<p class=\"success\">Your password has been updated.</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"password\" ng-model=\"vm.email\" required=\"required\" placeholder=\"New Password\" class=\"wide\"/><button type=\"submit\" class=\"action\">reset password</button></form>");
+$templateCache.put("views/sso-callback.directive.html","<p>SSO Callback Directive. Now redirecting...</p>");
+$templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now redirecting...</p>");}]);
 (function() {
   'use strict';
   var directive;
@@ -77,6 +79,46 @@ $templateCache.put("views/reset-password.directive.html","<p class=\"success\">Y
   };
 
   angular.module('appirio-tech-ng-login-reg').directive('resetPassword', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/sso-callback.directive.html',
+      controller: 'SSOCallbackController as vm',
+      scope: {
+        token: '@',
+        status: '@',
+        message: '@'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-login-reg').directive('ssoCallback', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/sso-login.directive.html',
+      controller: 'SSOLoginController as vm',
+      scope: {
+        org: '@'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-login-reg').directive('ssoLogin', directive);
 
 }).call(this);
 
@@ -231,5 +273,38 @@ $templateCache.put("views/reset-password.directive.html","<p class=\"success\">Y
   ResetPasswordController.$inject = ['$state'];
 
   angular.module('appirio-tech-ng-login-reg').controller('ResetPasswordController', ResetPasswordController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var SSOCallbackController;
+
+  SSOCallbackController = function($scope, UserV3Service) {
+    var redirect, vm;
+    vm = this;
+    vm.token = $scope.token;
+    vm.status = $scope.status;
+    vm.message = $scope.message;
+    redirect = function() {
+      vm.error = false;
+      return UserV3Service.loadUser().then(function(currentUser) {
+        var urlToken;
+        urlToken = $location.search();
+        if (currentUser.role === 'customer') {
+          return $state.go('view-work-multiple');
+        } else if (currentUser.role === 'copilot') {
+          return $state.go('copilot-projects');
+        } else {
+          return $state.go('home');
+        }
+      });
+    };
+    return vm;
+  };
+
+  SSOCallbackController.$inject = ['$scope', 'UserV3Service'];
+
+  angular.module('appirio-tech-ng-login-reg').controller('SSOCallbackController', SSOCallbackController);
 
 }).call(this);
