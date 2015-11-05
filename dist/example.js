@@ -1,14 +1,14 @@
 angular.module("app.constants", [])
 
-.constant("API_URL", "https://api.topcoder.com")
+.constant("API_URL", "https://api.topcoder-dev.com")
 
 .constant("AVATAR_URL", "https://www.topcoder.com")
 
 .constant("SUBMISSION_URL", "https://studio.topcoder.com")
 
-.constant("AUTH0_CLIENT_ID", "abc123")
+.constant("AUTH0_CLIENT_ID", "JFDo7HMkf0q2CkVFHojy3zHWafziprhT")
 
-.constant("AUTH0_DOMAIN", "topcoder.auth0.com")
+.constant("AUTH0_DOMAIN", "topcoder-dev.auth0.com")
 
 .constant("AUTH0_TOKEN_NAME", "userJWTToken")
 
@@ -28,7 +28,9 @@ angular.module("app.constants", [])
 angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot.example.html","<forgot-password></forgot-password>");
 $templateCache.put("views/login.example.html","<login></login>");
 $templateCache.put("views/registration.example.html","<registration></registration>");
-$templateCache.put("views/reset.example.html","<reset-password></reset-password>");}]);
+$templateCache.put("views/reset.example.html","<reset-password></reset-password>");
+$templateCache.put("views/sso-callback.example.html","<sso-callback token=\"abc\" status=\"def\" message=\"ghi\" auto=\"false\"></sso-callback>");
+$templateCache.put("views/sso-login.example.html","<sso-login org=\"sfdc-aspdev\" callback-state=\"SSO_CALLBACK\" auto=\"false\"></sso-login>");}]);
 (function() {
   'use strict';
   var config;
@@ -55,6 +57,16 @@ $templateCache.put("views/reset.example.html","<reset-password></reset-password>
       url: '/reset',
       title: 'reset',
       templateUrl: 'views/reset.example.html'
+    };
+    states['SSO_LOGIN'] = {
+      url: '/sso-login/:org',
+      templateUrl: 'views/sso-login.example.html',
+      "public": true
+    };
+    states['SSO_CALLBACK'] = {
+      url: '/sso-callback?userJWTToken&status&message',
+      templateUrl: 'views/sso-callback.example.html',
+      "public": true
     };
     results = [];
     for (key in states) {

@@ -94,7 +94,8 @@ $templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now
       scope: {
         token: '@',
         status: '@',
-        message: '@'
+        message: '@',
+        auto: '@'
       }
     };
   };
@@ -113,7 +114,9 @@ $templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now
       templateUrl: 'views/sso-login.directive.html',
       controller: 'SSOLoginController as vm',
       scope: {
-        org: '@'
+        org: '@',
+        callbackState: '@',
+        auto: '@'
       }
     };
   };
@@ -280,31 +283,70 @@ $templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now
   'use strict';
   var SSOCallbackController;
 
-  SSOCallbackController = function($scope, UserV3Service) {
-    var redirect, vm;
+  SSOCallbackController = function($scope, $state, TokenService, UserV3Service) {
+    var activate, auto, message, status, token, vm;
     vm = this;
-    vm.token = $scope.token;
-    vm.status = $scope.status;
-    vm.message = $scope.message;
-    redirect = function() {
-      vm.error = false;
-      return UserV3Service.loadUser().then(function(currentUser) {
-        var urlToken;
-        urlToken = $location.search();
-        if (currentUser.role === 'customer') {
-          return $state.go('view-work-multiple');
-        } else if (currentUser.role === 'copilot') {
-          return $state.go('copilot-projects');
-        } else {
-          return $state.go('home');
-        }
-      });
+    token = $scope.token;
+    status = $scope.status;
+    message = $scope.message;
+    auto = $scope.auto !== 'false';
+    activate = function() {
+      if (token) {
+        TokenService.setAppirioJWT(token);
+      }
+      if (auto) {
+        return UserV3Service.loadUser().then(function(currentUser) {
+          if (currentUser.role === 'customer') {
+            return $state.go('view-work-multiple');
+          } else if (currentUser.role === 'copilot') {
+            return $state.go('copilot-projects');
+          } else {
+            return $state.go('home');
+          }
+        });
+      }
     };
+    activate();
     return vm;
   };
 
-  SSOCallbackController.$inject = ['$scope', 'UserV3Service'];
+  SSOCallbackController.$inject = ['$scope', '$state', 'TokenService', 'UserV3Service'];
 
   angular.module('appirio-tech-ng-login-reg').controller('SSOCallbackController', SSOCallbackController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var SSOLoginController;
+
+  SSOLoginController = function($scope, $state, $window, AUTH0_DOMAIN, AUTH0_CLIENT_ID, API_URL) {
+    var activate, auto, callbackState, org, vm;
+    vm = this;
+    vm.error = false;
+    org = $scope.org;
+    callbackState = $scope.callbackState;
+    auto = $scope.auto !== 'false';
+    activate = function() {
+      var authUrl, authUrlParts, callbackUrl;
+      if (auto && org) {
+        callbackUrl = $state.href(callbackState, {}, {
+          absolute: true
+        });
+        authUrlParts = ["https://" + AUTH0_DOMAIN + "/authorize?", "response_type=token", "&client_id=" + AUTH0_CLIENT_ID, "&connection=" + org, "&redirect_uri=" + API_URL + "/pub/callback.html", "&state=" + (encodeURIComponent(callbackUrl)), "&scope=openid%20profile%20offline_access", "&device=device"];
+        authUrl = authUrlParts.join('');
+        console.log(authUrl);
+        return $window.location.href = authUrl;
+      } else {
+        return vm.error = 'No organization. Oh no!';
+      }
+    };
+    activate();
+    return vm;
+  };
+
+  SSOLoginController.$inject = ['$scope', '$state', '$window', 'AUTH0_DOMAIN', 'AUTH0_CLIENT_ID', 'API_URL'];
+
+  angular.module('appirio-tech-ng-login-reg').controller('SSOLoginController', SSOLoginController);
 
 }).call(this);
