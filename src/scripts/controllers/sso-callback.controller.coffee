@@ -1,28 +1,33 @@
 'use strict'
 
-SSOCallbackController = ($scope, UserV3Service) ->
-  vm         = this
-  vm.token   = $scope.token
-  vm.status  = $scope.status
-  vm.message = $scope.message
+SSOCallbackController = ($scope, $state, TokenService, UserV3Service) ->
+  vm      = this
+  token   = $scope.token
+  status  = $scope.status
+  message = $scope.message
+  auto    = $scope.auto != 'false'
 
-  redirect = ->
-    vm.error = false
+  activate = ->
+    if token
+      TokenService.setAppirioJWT token
 
-    UserV3Service.loadUser().then (currentUser) ->
-      urlToken = $location.search()
+    if auto
+      UserV3Service.loadUser().then (currentUser) ->
+        if currentUser.role == 'customer'
+          $state.go 'view-work-multiple'
+        else if currentUser.role == 'copilot'
+          $state.go 'copilot-projects'
+        else
+          $state.go 'home'
 
-      if currentUser.role == 'customer'
-        $state.go 'view-work-multiple'
-      else if currentUser.role == 'copilot'
-        $state.go 'copilot-projects'
-      else
-        $state.go 'home'
+  activate()
 
   vm
 
 SSOCallbackController.$inject = [
   '$scope'
+  '$state'
+  'TokenService'
   'UserV3Service'
 ]
 

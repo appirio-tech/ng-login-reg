@@ -8,5 +8,6 @@ directive = ->
     token     : '@'
     status    : '@'
     message   : '@'
+    auto      : '@'
 
 angular.module('appirio-tech-ng-login-reg').directive 'ssoCallback', directive

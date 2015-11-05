@@ -23,6 +23,16 @@ config = ($stateProvider) ->
     title       : 'reset'
     templateUrl : 'views/reset.example.html'
 
+  states['SSO_LOGIN'] =
+    url: '/sso-login/:org'
+    templateUrl: 'views/sso-login.example.html'
+    public: true
+
+  states['SSO_CALLBACK'] =
+    url: '/sso-callback?userJWTToken&status&message'
+    templateUrl: 'views/sso-callback.example.html'
+    public: true
+
   for key, state of states
     $stateProvider.state key, state
 
