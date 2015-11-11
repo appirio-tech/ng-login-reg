@@ -13,6 +13,11 @@ config = ($stateProvider) ->
     title       : 'registration'
     templateUrl : 'views/registration.example.html'
 
+  states['registration-success'] =
+    url         : '/registration-success'
+    title       : 'registration-success'
+    templateUrl : 'views/registration-success.example.html'
+
   states['forgot'] =
     url         : '/forgot'
     title       : 'forgot'

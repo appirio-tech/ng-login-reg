@@ -2,10 +2,10 @@ p.error(ng-class="{ invisible: !vm.error }") {{ vm.errorMessage }}
 
 form(ng-submit="vm.submit()")
   .first-name
-    input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="First Name"  autofocus=true)
+    input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="First Name" maxlength="64" autofocus=true)
 
   .last-name
-    input.widest(type="text" name="last-name" ng-model="vm.lastName" required=true placeholder="Last Name")
+    input.widest(type="text" name="last-name" ng-model="vm.lastName" required=true placeholder="Last Name" maxlength="64")
 
   .organization
     input.widest(type="text" name="organization" ng-model="vm.organization" required=true placeholder="Organization")
@@ -19,5 +19,3 @@ form(ng-submit="vm.submit()")
   input.widest(type="email" name="email" ng-model="vm.email" required=true placeholder="Email")
 
   button.action.submit(type="submit") Register
-
-p.thanks Thanks for creating an account.  We've sent you a confirmation link.  Please check your email and click the lick to activate your account. If you can't find the message please contact <a href="mailto:support@asp.com">support@asp.com</a>
