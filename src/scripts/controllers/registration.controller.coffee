@@ -1,13 +1,13 @@
 'use strict'
 
 RegistrationController = ($state, AuthService, UserV3Service) ->
-  vm              = this
-  vm.title        = 'Register'
-  vm.username     = ''
-  vm.password     = ''
-  vm.error        = false
-  vm.errorMessage = 'Error Creating User'
-  vm.submit       = null
+  vm                        = this
+  vm.title                  = 'Register'
+  vm.username               = ''
+  vm.password               = ''
+  vm.error                  = false
+  vm.errorMessage           = 'Error Creating User'
+  vm.submit                 = null
 
   vm.submit = ->
     vm.error = false
@@ -28,7 +28,7 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
     vm.errorMessage = error.data.result.content
 
   success = ->
-    $state.go 'view-work-multiple'
+    $state.go 'registration-success'
 
   registerSuccess = ->
     vm.error = false
