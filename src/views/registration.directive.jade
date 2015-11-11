@@ -2,7 +2,7 @@ p.error(ng-class="{ invisible: !vm.error }") {{ vm.errorMessage }}
 
 form(ng-submit="vm.submit()")
   .first-name
-    input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="First Name")
+    input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="First Name"  autofocus=true)
 
   .last-name
     input.widest(type="text" name="last-name" ng-model="vm.lastName" required=true placeholder="Last Name")
