@@ -27,6 +27,7 @@ angular.module("app.constants", [])
 
 angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot.example.html","<login-reg-shell flow=\"FORGOT\"></login-reg-shell>");
 $templateCache.put("views/login.example.html","<login-reg-shell flow=\"LOGIN\"></login-reg-shell>");
+$templateCache.put("views/registration-success.example.html","<login-reg-shell flow=\"REGISTRATION_SUCCESS\"></login-reg-shell>");
 $templateCache.put("views/registration.example.html","<login-reg-shell flow=\"REGISTRATION\"></login-reg-shell>");
 $templateCache.put("views/reset.example.html","<login-reg-shell flow=\"RESET\"></login-reg-shell>");
 $templateCache.put("views/sso-callback.example.html","<sso-callback token=\"abc\" status=\"def\" message=\"ghi\" auto=\"false\"></sso-callback>");
@@ -47,6 +48,11 @@ $templateCache.put("views/sso-login.example.html","<sso-login org=\"sfdc-aspdev\
       url: '/registration',
       title: 'registration',
       templateUrl: 'views/registration.example.html'
+    };
+    states['registration-success'] = {
+      url: '/registration-success',
+      title: 'registration-success',
+      templateUrl: 'views/registration-success.example.html'
     };
     states['forgot'] = {
       url: '/forgot',
