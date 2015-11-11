@@ -1,14 +1,14 @@
 angular.module("app.constants", [])
 
-.constant("API_URL", "https://api.topcoder-dev.com")
+.constant("API_URL", "https://api.topcoder.com")
 
 .constant("AVATAR_URL", "https://www.topcoder.com")
 
 .constant("SUBMISSION_URL", "https://studio.topcoder.com")
 
-.constant("AUTH0_CLIENT_ID", "JFDo7HMkf0q2CkVFHojy3zHWafziprhT")
+.constant("AUTH0_CLIENT_ID", "abc123")
 
-.constant("AUTH0_DOMAIN", "topcoder-dev.auth0.com")
+.constant("AUTH0_DOMAIN", "topcoder.auth0.com")
 
 .constant("AUTH0_TOKEN_NAME", "userJWTToken")
 
@@ -25,10 +25,10 @@ angular.module("app.constants", [])
 
 }).call(this);
 
-angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot.example.html","<forgot-password></forgot-password>");
-$templateCache.put("views/login.example.html","<login></login>");
-$templateCache.put("views/registration.example.html","<registration></registration>");
-$templateCache.put("views/reset.example.html","<reset-password></reset-password>");
+angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot.example.html","<login-reg-shell flow=\"FORGOT\"></login-reg-shell>");
+$templateCache.put("views/login.example.html","<login-reg-shell flow=\"LOGIN\"></login-reg-shell>");
+$templateCache.put("views/registration.example.html","<login-reg-shell flow=\"REGISTRATION\"></login-reg-shell>");
+$templateCache.put("views/reset.example.html","<login-reg-shell flow=\"RESET\"></login-reg-shell>");
 $templateCache.put("views/sso-callback.example.html","<sso-callback token=\"abc\" status=\"def\" message=\"ghi\" auto=\"false\"></sso-callback>");
 $templateCache.put("views/sso-login.example.html","<sso-login org=\"sfdc-aspdev\" callback-state=\"SSO_CALLBACK\" auto=\"false\"></sso-login>");}]);
 (function() {

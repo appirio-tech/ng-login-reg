@@ -36125,20 +36125,12 @@ angular.module('ui.router.state')
 
 (function() {
   'use strict';
-  var srv, transformIdOnlyResponse, transformResponse;
+  var srv, transformResponse;
 
   transformResponse = function(response) {
     var parsed, ref;
     parsed = JSON.parse(response);
     return (parsed != null ? (ref = parsed.result) != null ? ref.content : void 0 : void 0) || [];
-  };
-
-  transformIdOnlyResponse = function(response) {
-    var parsed, ref;
-    parsed = JSON.parse(response);
-    return {
-      id: parsed != null ? (ref = parsed.result) != null ? ref.content : void 0 : void 0
-    };
   };
 
   srv = function($resource, API_URL) {
@@ -36150,11 +36142,11 @@ angular.module('ui.router.state')
     methods = {
       put: {
         method: 'PUT',
-        transformResponse: transformIdOnlyResponse
+        transformResponse: transformResponse
       },
       post: {
         method: 'POST',
-        transformResponse: transformIdOnlyResponse
+        transformResponse: transformResponse
       },
       get: {
         transformResponse: transformResponse

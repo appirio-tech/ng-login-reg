@@ -8,12 +8,32 @@
 
 }).call(this);
 
-angular.module("appirio-tech-ng-login-reg").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot-password.directive.html","<p class=\"success\">Thanks, we\'ve emailed you a reset link. Please check your inbox. If you still need help, please contact us at support@topcoder.com</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"text\" ng-model=\"vm.email\" required=\"required\" placeholder=\"email\" class=\"wide\"/><button type=\"submit\" class=\"action\">send reset link</button></form>");
-$templateCache.put("views/login.directive.html","<p ng-class=\"{ invisible: !vm.error }\" class=\"error\">We can\'t find an account with the email / password you entered. Please try again.</p><form ng-submit=\"vm.submit()\" method=\"post\" class=\"flex column middle\"><input type=\"text\" ng-model=\"vm.username\" required=\"required\" placeholder=\"username\" class=\"wide\"/><input type=\"password\" ng-model=\"vm.password\" required=\"required\" placeholder=\"password\" class=\"wide\"/><button type=\"submit\" class=\"action\">login</button></form>");
-$templateCache.put("views/registration.directive.html","<p ng-class=\"{ invisible: !vm.error }\" class=\"error\">{{ vm.errorMessage }}</p><form ng-submit=\"vm.submit()\"><div class=\"first-name\"><input type=\"text\" name=\"first-name\" ng-model=\"vm.firstName\" required=\"required\" placeholder=\"first name\" class=\"widest\"/></div><div class=\"last-name\"><input type=\"text\" name=\"last-name\" ng-model=\"vm.lastName\" required=\"required\" placeholder=\"last name\" class=\"widest\"/></div><div class=\"organization\"><input type=\"text\" name=\"organization\" ng-model=\"vm.organization\" required=\"required\" placeholder=\"organization\" class=\"widest\"/></div><hr/><input type=\"text\" name=\"username\" ng-model=\"vm.username\" required=\"required\" placeholder=\"username\" class=\"widest\"/><input type=\"password\" name=\"password\" ng-model=\"vm.password\" required=\"required\" placeholder=\"password\" class=\"widest\"/><input type=\"email\" name=\"email\" ng-model=\"vm.email\" required=\"required\" placeholder=\"email\" class=\"widest\"/><button type=\"submit\" class=\"action submit\">Register</button></form><p class=\"thanks\">Thanks for creating an account.  We\'ve sent you a confirmation link.  Please check your email and click the lick to activate your account. If you can\'t find the message please contact <a href=\"mailto:support@asp.com\">support@asp.com</a></p>");
-$templateCache.put("views/reset-password.directive.html","<p class=\"success\">Your password has been updated.</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"password\" ng-model=\"vm.email\" required=\"required\" placeholder=\"New Password\" class=\"wide\"/><button type=\"submit\" class=\"action\">reset password</button></form>");
+angular.module("appirio-tech-ng-login-reg").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot-password.directive.html","<p class=\"success\">Thanks, we\'ve emailed you a reset link. Please check your inbox. If you still need help, please contact us at support@topcoder.com</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"text\" ng-model=\"vm.email\" required=\"required\" placeholder=\"email\" class=\"widest\"/><button type=\"submit\" class=\"action\">send reset link</button></form>");
+$templateCache.put("views/login-reg-shell.directive.html","<header class=\"flex center middle\"><img src=\"/images/asp.svg\"/></header><main ng-if=\"vm.flow == \'LOGIN\'\" class=\"elevated-bottom\"><h1>welcome back to appirio</h1><p class=\"secondary\">Let\'s start building your app.  Login or create your account below to begin.</p><login></login></main><footer ng-if=\"vm.flow == \'LOGIN\'\"><p>Don\'t have an account? <a ui-sref=\"register\">Register Now</a></p></footer><main ng-if=\"vm.flow == \'REGISTRATION\'\" class=\"elevated-bottom\"><h1>welcome to appirio</h1><p class=\"secondary\">Let\'s start building your app.  Create your account below to begin.</p><registration></registration></main><footer ng-if=\"vm.flow == \'REGISTRATION\'\"><p>Already have an account? <a ui-sref=\"login\">Login Here</a></p></footer><main ng-if=\"vm.flow == \'FORGOT\'\" class=\"elevated-bottom\"><h1>reset password</h1><p class=\"secondary\">Enter your email and we\'ll send you a link to reset your password.</p><forgot-password></forgot-password></main><footer ng-if=\"vm.flow == \'FORGOT\'\"><p><a ui-sref=\"login\">Back to Login</a></p></footer><main ng-if=\"vm.flow == \'RESET\'\" class=\"elevated-bottom\"><h1>reset password</h1><p class=\"secondary\">Enter your email and we\'ll send you a link to reset your password.</p><reset-password></reset-password></main><footer ng-if=\"vm.flow == \'RESET\'\"><p><a ui-sref=\"login\">Back to Login</a></p></footer>");
+$templateCache.put("views/login.directive.html","<p ng-class=\"{ invisible: !vm.error }\" class=\"error\">We can\'t find an account with the email / password you entered. Please try again.</p><form ng-submit=\"vm.submit()\" method=\"post\" class=\"flex column middle\"><input type=\"text\" ng-model=\"vm.username\" required=\"required\" placeholder=\"username\" class=\"widest\"/><input type=\"password\" ng-model=\"vm.password\" required=\"required\" placeholder=\"password\" class=\"widest\"/><div class=\"forgot\"><a ui-sref=\"RESET_PASSWORD\">Forgot Password?</a></div><button type=\"submit\" class=\"action\">login</button></form>");
+$templateCache.put("views/registration.directive.html","<p ng-class=\"{ invisible: !vm.error }\" class=\"error\">{{ vm.errorMessage }}</p><form ng-submit=\"vm.submit()\"><div class=\"first-name\"><input type=\"text\" name=\"first-name\" ng-model=\"vm.firstName\" required=\"required\" placeholder=\"First Name\" class=\"widest\"/></div><div class=\"last-name\"><input type=\"text\" name=\"last-name\" ng-model=\"vm.lastName\" required=\"required\" placeholder=\"Last Name\" class=\"widest\"/></div><div class=\"organization\"><input type=\"text\" name=\"organization\" ng-model=\"vm.organization\" required=\"required\" placeholder=\"Organization\" class=\"widest\"/></div><hr/><input type=\"text\" name=\"username\" ng-model=\"vm.username\" required=\"required\" placeholder=\"Username\" class=\"widest\"/><input type=\"password\" name=\"password\" ng-model=\"vm.password\" required=\"required\" placeholder=\"Password\" class=\"widest\"/><input type=\"email\" name=\"email\" ng-model=\"vm.email\" required=\"required\" placeholder=\"Email\" class=\"widest\"/><button type=\"submit\" class=\"action submit\">Register</button></form><p class=\"thanks\">Thanks for creating an account.  We\'ve sent you a confirmation link.  Please check your email and click the lick to activate your account. If you can\'t find the message please contact <a href=\"mailto:support@asp.com\">support@asp.com</a></p>");
+$templateCache.put("views/reset-password.directive.html","<p class=\"success\">Your password has been updated.</p><form ng-submit=\"vm.submit()\" method=\"post\"><input type=\"password\" ng-model=\"vm.email\" required=\"required\" placeholder=\"New Password\" class=\"widest\"/><button type=\"submit\" class=\"action\">reset password</button></form>");
 $templateCache.put("views/sso-callback.directive.html","<p>SSO Callback Directive. Now redirecting...</p>");
 $templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now redirecting...</p>");}]);
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/login-reg-shell.directive.html',
+      controller: 'LoginRegShellController as vm',
+      scope: {
+        flow: '@'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-login-reg').directive('loginRegShell', directive);
+
+}).call(this);
+
 (function() {
   'use strict';
   var directive;
@@ -348,5 +368,25 @@ $templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now
   SSOLoginController.$inject = ['$scope', '$state', '$window', 'AUTH0_DOMAIN', 'AUTH0_CLIENT_ID', 'API_URL'];
 
   angular.module('appirio-tech-ng-login-reg').controller('SSOLoginController', SSOLoginController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var LoginRegShellController;
+
+  LoginRegShellController = function($scope) {
+    var activate, vm;
+    vm = this;
+    vm.flow = $scope.flow || 'LOGIN';
+    activate = function() {
+      return vm;
+    };
+    return activate();
+  };
+
+  LoginRegShellController.$inject = ['$scope'];
+
+  angular.module('appirio-tech-ng-login-reg').controller('LoginRegShellController', LoginRegShellController);
 
 }).call(this);
