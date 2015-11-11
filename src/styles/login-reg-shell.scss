@@ -17,7 +17,6 @@ login-reg-shell {
     }
   }
 
-
   header {
     height: 67px;
     background-color: $black;
@@ -33,7 +32,7 @@ login-reg-shell {
     margin-right: auto;
 
     input, button {
-      margin-top: $vertical-small;
+      margin-top: 15px;
     }
   }
 }
