@@ -19,9 +19,4 @@
 body {
   background-color: $neutral-color-lightest;
   padding: $padding;
-
-  .invisible {
-    opacity: .3;
-    visibility: visible;
-  }
 }

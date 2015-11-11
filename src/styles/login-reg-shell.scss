@@ -6,6 +6,17 @@ login-reg-shell {
   width     : 600px;
   text-align: center;
 
+  p.error {
+    max-height : 40px;
+    overflow   : hidden;
+    padding-top: 20px;
+
+    &.hide {
+      padding-top: 0px;
+      max-height: 0;
+    }
+  }
+
   main {
     background-color: $white;
     padding: $vertical-big;
@@ -13,7 +24,6 @@ login-reg-shell {
     > p {
       font-size    : $font-size-big;
       font-weight  : $font-weight;
-      margin-bottom: $vertical-small;
     }
   }
 
@@ -30,6 +40,7 @@ login-reg-shell {
     width: 380px;
     margin-left : auto;
     margin-right: auto;
+    margin-top: 10px;
 
     input, button {
       margin-top: 15px;
