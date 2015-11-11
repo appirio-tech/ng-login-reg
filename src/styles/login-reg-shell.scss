@@ -1,0 +1,39 @@
+@import "work-includes";
+@import "variables";
+
+login-reg-shell {
+  display   : block;
+  width     : 600px;
+  text-align: center;
+
+  main {
+    background-color: $white;
+    padding: $vertical-big;
+
+    > p {
+      font-size    : $font-size-big;
+      font-weight  : $font-weight;
+      margin-bottom: $vertical-small;
+    }
+  }
+
+
+  header {
+    height: 67px;
+    background-color: $black;
+  }
+
+  footer {
+    margin-top: $vertical;
+  }
+
+  form {
+    width: 380px;
+    margin-left : auto;
+    margin-right: auto;
+
+    input, button {
+      margin-top: $vertical-small;
+    }
+  }
+}

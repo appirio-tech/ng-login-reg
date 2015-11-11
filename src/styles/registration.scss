@@ -1,7 +1,14 @@
 @import "work-includes";
+@import "variables";
 
 registration {
   display: block;
+
+  .error {
+    width       : 380px;
+    margin-right: auto;
+    margin-left : auto;
+  }
 
   .first-name, .last-name {
     width: 50%;
@@ -9,19 +16,11 @@ registration {
   }
 
   .first-name {
-    padding-right: $padding-smallest;
-
-    input {
-      margin-top: 0px;
-    }
+    padding-right: 5px;
   }
 
   .last-name {
-    padding-left: $padding-smallest;
-
-    input {
-      margin-top: 0px;
-    }
+    padding-left: 5px;
   }
 
   .organization {
@@ -30,22 +29,15 @@ registration {
   }
 
   hr {
-    margin-top: $margin;
+    margin: $vertical 0;
   }
 
-  form {
-    margin-top: $margin-small;
-    text-align: center;
-
-    input, button {
-      margin-top: $margin-small;
-    }
-  }
+  form {  }
 
   .thanks {
-    text-align: center;
-    max-width: 300px;
-    margin: 0 auto;
+    text-align : center;
+    max-width  : 380px;
+    margin     : 0 auto;
     line-height: $line-height-big;
   }
 }

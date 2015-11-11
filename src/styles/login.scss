@@ -1,18 +1,17 @@
 @import "work-includes";
+@import "variables";
 
 login {
   display: block;
   text-align: center;
 
-  form {
-    margin-top: $margin-small;
+  .forgot {
+    width     : 380px;
+    text-align: left;
+    margin-top: $vertical-small;
 
-    input, button {
-      margin-top: $margin-small;
-
-      &:first-child {
-        margin-top: 0;
-      }
+    a {
+      text-decoration: underline;
     }
   }
 }

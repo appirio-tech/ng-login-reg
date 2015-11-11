@@ -2,21 +2,21 @@ p.error(ng-class="{ invisible: !vm.error }") {{ vm.errorMessage }}
 
 form(ng-submit="vm.submit()")
   .first-name
-    input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="first name")
+    input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="First Name")
 
   .last-name
-    input.widest(type="text" name="last-name" ng-model="vm.lastName" required=true placeholder="last name")
+    input.widest(type="text" name="last-name" ng-model="vm.lastName" required=true placeholder="Last Name")
 
   .organization
-    input.widest(type="text" name="organization" ng-model="vm.organization" required=true placeholder="organization")
+    input.widest(type="text" name="organization" ng-model="vm.organization" required=true placeholder="Organization")
 
   hr
 
-  input.widest(type="text" name="username" ng-model="vm.username" required=true placeholder="username")
+  input.widest(type="text" name="username" ng-model="vm.username" required=true placeholder="Username")
 
-  input.widest(type="password" name="password" ng-model="vm.password" required=true placeholder="password")
+  input.widest(type="password" name="password" ng-model="vm.password" required=true placeholder="Password")
 
-  input.widest(type="email" name="email" ng-model="vm.email" required=true placeholder="email")
+  input.widest(type="email" name="email" ng-model="vm.email" required=true placeholder="Email")
 
   button.action.submit(type="submit") Register
 

@@ -1,0 +1,44 @@
+header.flex.center.middle
+  img(src="/images/asp.svg")
+
+main.elevated-bottom(ng-if="vm.flow == 'LOGIN'")
+  h1 welcome back to appirio
+
+  p.secondary Let's start building your app.  Login or create your account below to begin.
+
+  login
+
+footer(ng-if="vm.flow == 'LOGIN'")
+  p Don't have an account? <a ui-sref="register">Register Now</a>
+
+main.elevated-bottom(ng-if="vm.flow == 'REGISTRATION'")
+  h1 welcome to appirio
+
+  p.secondary Let's start building your app.  Create your account below to begin.
+
+  registration
+
+footer(ng-if="vm.flow == 'REGISTRATION'")
+  p Already have an account? <a ui-sref="login">Login Here</a>
+
+main.elevated-bottom(ng-if="vm.flow == 'FORGOT'")
+  h1 reset password
+
+  p.secondary Enter your email and we'll send you a link to reset your password.
+
+  forgot-password
+
+footer(ng-if="vm.flow == 'FORGOT'")
+  p <a ui-sref="login">Back to Login</a>
+
+
+main.elevated-bottom(ng-if="vm.flow == 'RESET'")
+  h1 reset password
+
+  p.secondary Enter your email and we'll send you a link to reset your password.
+
+  reset-password
+
+footer(ng-if="vm.flow == 'RESET'")
+  p <a ui-sref="login">Back to Login</a>
+
