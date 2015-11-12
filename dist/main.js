@@ -256,11 +256,12 @@ $templateCache.put("views/sso-login.directive.html","<p>SSO Login Directive. Now
       return vm.errorMessage = error.data.result.content;
     };
     success = function() {
-      return $state.go('registration-success');
+      return $state.go('view-work-multiple');
     };
     registerSuccess = function() {
       var loginOptions;
       vm.error = false;
+      $state.go('registration-success');
       loginOptions = {
         username: vm.username,
         password: vm.password,
