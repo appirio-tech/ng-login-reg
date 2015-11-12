@@ -28,10 +28,11 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
     vm.errorMessage = error.data.result.content
 
   success = ->
-    $state.go 'registration-success'
+    $state.go 'view-work-multiple'
 
   registerSuccess = ->
     vm.error = false
+    $state.go 'registration-success'
 
     loginOptions =
       username: vm.username
