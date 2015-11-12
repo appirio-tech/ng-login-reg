@@ -1,5 +1,7 @@
 p.error(ng-class="{ hide: !vm.error }") {{ vm.errorMessage }}
 
+loader(ng-if="vm.loading")
+
 form(ng-submit="vm.submit()")
   .first-name
     input.widest(type="text" name="first-name" ng-model="vm.firstName" required=true placeholder="First Name" maxlength="64" autofocus=true)

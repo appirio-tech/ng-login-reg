@@ -8,12 +8,14 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
   vm.error                  = false
   vm.errorMessage           = 'Error Creating User'
   vm.submit                 = null
+  vm.loading                = false
 
   vm.submit = ->
     vm.error = false
+    vm.loading = true
 
     # Get the absolute url to our the confirmation page
-    afterActivationURL = $state.href('view-work-multiple', [], { absolute: true })
+    afterActivationURL = $state.href('login', [], { absolute: true })
 
     registerOptions =
       handle            : vm.username
@@ -25,13 +27,15 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
 
   registerError = (error) ->
     vm.error        = true
+    vm.loading      = false
     vm.errorMessage = error.data.result.content
 
   success = ->
     $state.go 'view-work-multiple'
 
   registerSuccess = ->
-    vm.error = false
+    vm.error   = false
+    vm.loading = false
     $state.go 'registration-success'
 
     loginOptions =

@@ -7,9 +7,11 @@ LoginController = ($rootScope, $location, $state, AuthService, UserV3Service) ->
   vm.password = ''
   vm.error    = false
   vm.submit   = null
+  vm.loading  = false
 
   vm.submit = ->
-    vm.error = false
+    vm.error   = false
+    vm.loading = true
 
     loginOptions =
       username: vm.username
@@ -20,10 +22,12 @@ LoginController = ($rootScope, $location, $state, AuthService, UserV3Service) ->
     AuthService.login loginOptions
 
   loginFailure = (error) ->
-    vm.error = true
+    vm.error   = true
+    vm.loading = false
 
   loginSuccess = ->
-    vm.error = false
+    vm.error   = false
+    vm.loading = false
 
     UserV3Service.loadUser().then (currentUser) ->
       urlToken = $location.search()
