@@ -39,8 +39,7 @@ registration {
       font-weight: $font-weight-bold;
     }
 
-    .use {
-      margin-top: 15px;
+    p {
       line-height: 24px;
     }
   }
@@ -52,6 +51,7 @@ registration {
   ul.use {
     list-style: circle;
     margin-left: 20px;
+    margin-top: 15px;
   }
 
   input {
