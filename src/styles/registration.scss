@@ -32,7 +32,33 @@ registration {
     margin: $vertical 0;
   }
 
-  form {  }
+  .username, .password {
+    position: relative;
+
+    .header {
+      font-weight: $font-weight-bold;
+    }
+
+    .use {
+      margin-top: 15px;
+      line-height: 24px;
+    }
+  }
+
+  .tooltip {
+    display: none;
+  }
+
+  ul.use {
+    list-style: circle;
+    margin-left: 20px;
+  }
+
+  input {
+    &:focus + .tooltip {
+      display: block;
+    }
+  }
 
   .thanks {
     text-align : center;
