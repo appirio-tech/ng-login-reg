@@ -38,10 +38,12 @@ LoginController = ($rootScope, $location, $state, AuthService, UserV3Service) ->
         $state.go(urlToken.retState)
       else if $rootScope.preAuthState
         preAuthState = $rootScope.preAuthState
+        preAuthParams = $rootScope.preAuthParams
 
         delete $rootScope.preAuthState
+        delete $rootScope.preAuthParams
 
-        $state.go preAuthState
+        $state.go preAuthState, preAuthParams
       else if currentUser.role == 'customer'
         $state.go 'view-work-multiple'
       else if currentUser.role == 'copilot'
