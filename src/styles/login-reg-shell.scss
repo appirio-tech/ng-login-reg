@@ -29,7 +29,12 @@ login-reg-shell {
   }
 
   header {
-    height: 67px;
+    padding: 10px;
+
+    img {
+      height: 45px;
+    }
+
     background-color: $black;
   }
 
