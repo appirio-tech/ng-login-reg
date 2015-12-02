@@ -25,20 +25,12 @@ main.elevated-bottom(ng-if="vm.flow == 'REGISTRATION_SUCCESS'")
   p Thanks for creating an account.  We've sent you a confirmation link.  Please check your email and click the link to activate your account. If you can't find the message please contact <a href="mailto:support@asp.com">support@asp.com</a>
 
 main.elevated-bottom(ng-if="vm.flow == 'FORGOT'")
-  h1 reset password
-
-  p.secondary Enter your email and we'll send you a link to reset your password.
-
   forgot-password
 
 footer(ng-if="vm.flow == 'FORGOT'")
   p <a ui-sref="login">Back to Login</a>
 
 main.elevated-bottom(ng-if="vm.flow == 'RESET'")
-  h1 reset password
-
-  p.secondary Enter your email and we'll send you a link to reset your password.
-
   reset-password
 
 footer(ng-if="vm.flow == 'RESET'")

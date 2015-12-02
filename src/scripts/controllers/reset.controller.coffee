@@ -1,15 +1,34 @@
 'use strict'
 
-ResetPasswordController = ($state) ->
-  vm = this
+ResetPasswordController = ($stateParams, $state, AuthService) ->
+  vm          = this
+  vm.password = ''
+  vm.success  = false
+  vm.error    = ''
+  token       = $stateParams.token
+  handle      = $stateParams.handle
 
-  activate = ->
-    vm
+  vm.submit = ->
+    vm.error = false
 
-  activate()
+    AuthService.resetPassword(handle, token, vm.password).then(success).catch(failure)
+
+  success = ->
+    vm.success = true
+
+    $state.go 'login', { passwordReset: true }
+
+  failure = (res) ->
+    vm.error = res.data.result.content
+
+  vm
 
 ResetPasswordController.$inject = [
+  '$stateParams'
   '$state'
+  'AuthService'
 ]
 
 angular.module('appirio-tech-ng-login-reg').controller 'ResetPasswordController', ResetPasswordController
+
+

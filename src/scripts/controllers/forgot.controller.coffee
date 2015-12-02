@@ -1,15 +1,29 @@
 'use strict'
 
-ForgotPasswordController = ($state) ->
-  vm = this
+ForgotPasswordController = ($stateParams, AuthService) ->
+  vm          = this
+  vm.email    = ''
+  vm.error    = ''
+  vm.success  = false
 
-  activate = ->
-    vm
+  vm.submit = ->
+    vm.error   = false
 
-  activate()
+    AuthService.sendResetEmail(vm.email).then(success).catch(failure)
+
+  success = ->
+    vm.success = true
+
+  failure = (res) ->
+    vm.error = res.result.content
+
+  vm
 
 ForgotPasswordController.$inject = [
-  '$state'
+  '$stateParams'
+  'AuthService'
 ]
 
 angular.module('appirio-tech-ng-login-reg').controller 'ForgotPasswordController', ForgotPasswordController
+
+
