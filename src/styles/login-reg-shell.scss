@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 @import "variables";
 
 login-reg-shell {
@@ -19,11 +19,11 @@ login-reg-shell {
 
   main {
     background-color: $white;
-    padding: $vertical-big;
+    padding: 35px 35px 30px 35px;
 
     > p {
-      font-size    : $font-size-big;
-      font-weight  : $font-weight;
+      font-size    : 16px;
+      font-weight  : 400;
       line-height  : 21px
     }
   }
@@ -35,7 +35,7 @@ login-reg-shell {
       height: 45px;
     }
 
-    background-color: $black;
+    background-color: $grey-darkest;
   }
 
   footer {
@@ -49,7 +49,7 @@ login-reg-shell {
     margin-top: 10px;
 
     input, button {
-      margin-top: 15px;
+      margin-top: 20px;
     }
   }
 }

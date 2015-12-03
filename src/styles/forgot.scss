@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 
 forgot-password {
   display: block;
@@ -11,6 +11,6 @@ forgot-password {
   }
 
   button {
-    margin-top: $margin-small;
+    margin-top: 10px;
   }
 }
