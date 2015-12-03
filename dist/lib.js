@@ -36589,7 +36589,7 @@ angular.module('ui.router.state')
   'use strict';
   var AuthService;
 
-  AuthService = function(AuthorizationsAPIService, auth, TokenService, $q) {
+  AuthService = function(AuthorizationsAPIService, auth, TokenService, $q, API_URL, $http) {
     var auth0Signin, getNewJWT, isLoggedIn, login, logout, resetPassword, sendResetEmail, setAuth0Tokens, setJWT;
     isLoggedIn = function() {
       return TokenService.tokenIsValid();
@@ -36683,7 +36683,7 @@ angular.module('ui.router.state')
     };
   };
 
-  AuthService.$inject = ['AuthorizationsAPIService', 'auth', 'TokenService', '$q'];
+  AuthService.$inject = ['AuthorizationsAPIService', 'auth', 'TokenService', '$q', 'API_URL', '$http'];
 
   angular.module('appirio-tech-ng-auth').factory('AuthService', AuthService);
 
