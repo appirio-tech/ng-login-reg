@@ -25,13 +25,13 @@ angular.module("app.constants", [])
 
 }).call(this);
 
-angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot.example.html","<login-reg-shell flow=\"FORGOT\"></login-reg-shell>");
-$templateCache.put("views/login.example.html","<login-reg-shell flow=\"LOGIN\"></login-reg-shell>");
-$templateCache.put("views/registration-success.example.html","<login-reg-shell flow=\"REGISTRATION_SUCCESS\"></login-reg-shell>");
-$templateCache.put("views/registration.example.html","<login-reg-shell flow=\"REGISTRATION\"></login-reg-shell>");
-$templateCache.put("views/reset.example.html","<login-reg-shell flow=\"RESET\"></login-reg-shell>");
-$templateCache.put("views/sso-callback.example.html","<sso-callback token=\"abc\" status=\"def\" message=\"ghi\" auto=\"false\"></sso-callback>");
-$templateCache.put("views/sso-login.example.html","<sso-login org=\"sfdc-aspdev\" callback-state=\"SSO_CALLBACK\" auto=\"false\"></sso-login>");}]);
+angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/forgot.example.html","<login-reg-shell flow=FORGOT></login-reg-shell>");
+$templateCache.put("views/login.example.html","<login-reg-shell flow=LOGIN></login-reg-shell>");
+$templateCache.put("views/registration-success.example.html","<login-reg-shell flow=REGISTRATION_SUCCESS></login-reg-shell>");
+$templateCache.put("views/registration.example.html","<login-reg-shell flow=REGISTRATION></login-reg-shell>");
+$templateCache.put("views/reset.example.html","<login-reg-shell flow=RESET></login-reg-shell>");
+$templateCache.put("views/sso-callback.example.html","<sso-callback token=abc status=def message=ghi auto=false></sso-callback>");
+$templateCache.put("views/sso-login.example.html","<sso-login org=sfdc-aspdev callback-state=SSO_CALLBACK auto=false></sso-login>");}]);
 (function() {
   'use strict';
   var config;
