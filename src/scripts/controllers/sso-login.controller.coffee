@@ -1,47 +1,47 @@
 'use strict'
 
-SSOLoginController = ($scope, $state, $window, AUTH0_DOMAIN, AUTH0_CLIENT_ID, API_URL) ->
-  vm            = this
-  vm.error      = false
-
-  org           = $scope.org
-  callbackState = $scope.callbackState
-  auto          = $scope.auto != 'false'
+SSOLoginController = ($state, $stateParams, $window, AuthService) ->
+  vm               = this
+  vm.loading       = false
+  vm.success       = false
+  vm.error         = ''
+  vm.emailOrHandle = ''
+  vm.org           = $stateParams.org
 
   activate = ->
-    if auto && org
-      callbackUrl = $state.href callbackState, {}, { absolute: true }
+    if vm.org
+      go()
 
-      authUrlParts = [
-        "https://#{AUTH0_DOMAIN}/authorize?"
-        "response_type=token"
-        "&client_id=#{AUTH0_CLIENT_ID}"
-        "&connection=#{org}"
-        "&redirect_uri=#{API_URL}/pub/callback.html"
-        "&state=#{encodeURIComponent(callbackUrl)}"
-        "&scope=openid%20profile%20offline_access"
-        "&device=device"
-      ]
+  vm.submit = ->
+    vm.loading = true
 
-      authUrl = authUrlParts.join('')
-      console.log authUrl
+    success = (org) ->
+      vm.org     = org
+      vm.success = true
 
-      $window.location.href = authUrl;
+      go()
 
-    else
-      vm.error = 'No organization. Oh no!'
+    failure = (err) ->
+      vm.loading = false
+      vm.error   = err
+
+    AuthService.getSSOProvider(vm.emailOrHandle).then(success).catch(failure)
+
+  go = ->
+    callbackUrl = $state.href 'SSO_CALLBACK', {}, { absolute: true }
+    authUrl     = AuthService.generateSSOUrl vm.org, callbackUrl
+
+    $window.location.href = authUrl;
 
   activate()
 
   vm
 
 SSOLoginController.$inject = [
-  '$scope'
   '$state'
+  '$stateParams'
   '$window'
-  'AUTH0_DOMAIN'
-  'AUTH0_CLIENT_ID'
-  'API_URL'
+  'AuthService'
 ]
 
 angular.module('appirio-tech-ng-login-reg').controller 'SSOLoginController', SSOLoginController
