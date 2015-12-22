@@ -1,5 +1,5 @@
 {
-  "name": "appirio-tech-ng-messaging",
+  "name": "appirio-tech-ng-login-reg",
   "version": "2.0.0",
   "main": "./src/src.coffee",
   "devDependencies": {
