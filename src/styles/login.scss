@@ -14,4 +14,16 @@ login {
       text-decoration: underline;
     }
   }
+
+  .thankyou {
+    background-color: $primary-color;
+    margin: 1em 0;
+    padding: 1em;
+
+    p {
+      color: $white;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
 }

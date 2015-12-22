@@ -1,13 +1,14 @@
 'use strict'
 
-LoginController = ($rootScope, $location, $state, AuthService, UserV3Service) ->
-  vm          = this
-  vm.title    = 'Login'
-  vm.username = ''
-  vm.password = ''
-  vm.error    = false
-  vm.submit   = null
-  vm.loading  = false
+LoginController = ($rootScope, $location, $state, $stateParams, AuthService, UserV3Service) ->
+  vm           = this
+  vm.title     = 'Login'
+  vm.username  = ''
+  vm.password  = ''
+  vm.error     = false
+  vm.submit    = null
+  vm.loading   = false
+  vm.activated = $stateParams.activated
 
   vm.submit = ->
     vm.error   = false
@@ -60,6 +61,7 @@ LoginController.$inject = [
   '$rootScope'
   '$location'
   '$state'
+  '$stateParams'
   'AuthService'
   'UserV3Service'
 ]
