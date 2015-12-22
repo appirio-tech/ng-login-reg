@@ -11,8 +11,7 @@ https://drive.google.com/drive/folders/0B6NlMQSXkImbfm5DcEZqN1JPN1R6MGVvbDdzTEEt
 
 ## Development
 ```
-alias gserve='nvm use; gulp clean; gulp serve'
-alias gtest='nvm use; gulp test'
-alias gtestserve='nvm use; gulp test-serve'
-alias gbuild='nvm use; gulp clean; gulp preprocessors; gulp useref; gulp copy-files;'
+nvm use
+npm install
+npm run dev
 ```

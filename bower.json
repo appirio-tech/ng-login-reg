@@ -1,28 +1,17 @@
 {
-  "name": "ngSubmissions",
-  "version": "0.0.1",
-  "description": "Appiro Work Platform",
-  "main": "./dist/main.js",
-  "authors": [
-    ""
-  ],
-  "license": "",
+  "name": "appirio-tech-ng-messaging",
+  "version": "9.0.0",
+  "main": "./src/src.coffee",
   "devDependencies": {
-    "angular-mocks": "^1.3.x",
-    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
-    "auto-config-fake-server": "2.x.x",
-    "appirio-tech-api-schemas": "5.x.x",
-    "angular-ui-router": "^0.2.x",
-    "angular-resource": "^1.3.x"
+    "appirio-tech-webpack-config": "0.x.x"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server -d --colors",
+    "clean": "rm -r dist",
+    "build": "webpack --config webpack.config.js; cp example/index.html dist/"
   },
   "dependencies": {
-    "angular": "^1.4.x",
     "appirio-tech-ng-ui-components": "0.x.x",
-    "appirio-tech-ng-api-services": "0.x.x",
-    "appirio-tech-ng-auth": "3.x.x"
-  },
-  "ignore": [
-    "**/*",
-    "!dist/**/*"
-  ]
+    "appirio-tech-ng-auth": "4.x.x"
+  }
 }
