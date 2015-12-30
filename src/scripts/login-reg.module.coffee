@@ -6,6 +6,7 @@ dependencies = [
   'app.constants'
   'appirio-tech-ng-api-services'
   'appirio-tech-ng-auth'
+  'react'
 ]
 
 angular.module 'appirio-tech-ng-login-reg', dependencies

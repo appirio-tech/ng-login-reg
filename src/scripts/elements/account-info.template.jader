@@ -1,0 +1,30 @@
+header
+  .flex.middle
+    h4 account info
+
+    p Username and email are not editable.
+
+  hr
+
+main
+  h6 username
+
+  p= username
+
+  h6.email-address email address
+
+  p= email
+
+  hr
+
+  h6 password
+
+  p Current Password
+
+  input(type="password" placeholder="Enter Password")
+
+  p New Password
+
+  input(type="password" placeholder="Enter Password")
+
+  button(disabled=true) save
