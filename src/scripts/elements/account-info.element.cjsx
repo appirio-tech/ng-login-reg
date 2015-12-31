@@ -6,21 +6,17 @@ classNames = require 'classnames'
 template   = require './account-info.template'
 
 element =
-  # propTypes:
-  #   checked : React.PropTypes.bool
-  #   label   : React.PropTypes.string
-  #   onChange: React.PropTypes.func
+  propTypes:
+    username: React.PropTypes.string
+    email   : React.PropTypes.string
+    onSubmit: React.PropTypes.func
 
   getInitialState: ->
+    username       : this.props.username
+    email          : this.props.email
     currentPassword: ''
-    newPassword: ''
+    newPassword    : ''
 
-  # handleClick: ->
-  #   this.setState
-  #     checked: !this.state.checked
-  #     label: this.state.label
-
-  #   this.props.onChange? !this.state.checked
   currentPasswordChange: (e) ->
     this.setState currentPassword: e.target.value
 
@@ -39,12 +35,11 @@ element =
     saveDisabled = !this.state.currentPassword.length || !this.state.newPassword.length
 
     template
-      username             : 'Alex Tran'
-      email                : 'alex@appirio.com'
+      username             : this.state.username
+      email                : this.state.email
       saveDisabled         : saveDisabled
       currentPasswordChange: this.currentPasswordChange
       newPasswordChange    : this.newPasswordChange
       onSubmit             : this.onSubmit
-
 
 module.exports = React.createClass element

@@ -30,6 +30,7 @@ config = ($stateProvider) ->
 
   states['ACCOUNT_INFO'] =
     url         : '/account-info'
+    controller  : 'AccountInfoExampleController as vm'
     title       : 'Account Info'
     templateUrl : 'views/account-info.example.html'
 

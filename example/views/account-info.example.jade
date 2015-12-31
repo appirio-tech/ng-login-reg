@@ -1,2 +1,4 @@
+p Submitted Data: {{ vm.submittedData }}
+
 .light-bg(style="padding:20px")
-  account-info
+  account-info(username="vm.username" email="vm.email" on-submit="vm.onSubmit")
