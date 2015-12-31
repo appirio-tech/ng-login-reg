@@ -17,14 +17,15 @@ main
 
   hr
 
-  h6 password
+  form(onSubmit=onSubmit)
+    h6 password
 
-  p Current Password
+    p Current Password
 
-  input(type="password" placeholder="Enter Password")
+    input(type="password" placeholder="Enter Password" onChange=currentPasswordChange)
 
-  p New Password
+    p New Password
 
-  input(type="password" placeholder="Enter Password")
+    input(type="password" placeholder="Enter Password" onChange=newPasswordChange)
 
-  button(disabled=true) save
+    button.action(disabled=saveDisabled) save

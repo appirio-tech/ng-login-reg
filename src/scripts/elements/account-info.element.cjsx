@@ -11,9 +11,9 @@ element =
   #   label   : React.PropTypes.string
   #   onChange: React.PropTypes.func
 
-  # getInitialState: ->
-  #   checked: this.props.checked
-  #   label: this.props.label
+  getInitialState: ->
+    currentPassword: ''
+    newPassword: ''
 
   # handleClick: ->
   #   this.setState
@@ -21,11 +21,30 @@ element =
   #     label: this.state.label
 
   #   this.props.onChange? !this.state.checked
+  currentPasswordChange: (e) ->
+    this.setState currentPassword: e.target.value
+
+  newPasswordChange: (e) ->
+    this.setState newPassword: e.target.value
+
+  onSubmit: (e) ->
+    e.preventDefault()
+    currentPassword = this.state.currentPassword.trim()
+    newPassword     = this.state.newPassword.trim()
+
+    if currentPassword && newPassword
+      this.props.onSubmit?(e, this.state)
 
   render: ->
+    saveDisabled = !this.state.currentPassword.length || !this.state.newPassword.length
+
     template
-      username: 'Alex Tran'
-      email: 'alex@appirio.com'
+      username             : 'Alex Tran'
+      email                : 'alex@appirio.com'
+      saveDisabled         : saveDisabled
+      currentPasswordChange: this.currentPasswordChange
+      newPasswordChange    : this.newPasswordChange
+      onSubmit             : this.onSubmit
 
 
 module.exports = React.createClass element
