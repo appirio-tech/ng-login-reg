@@ -9,11 +9,11 @@ header
 main
   h6 username
 
-  p= username
+  p= state.username
 
   h6.email-address email address
 
-  p= email
+  p= state.email
 
   hr
 

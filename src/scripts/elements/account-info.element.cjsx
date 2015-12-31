@@ -1,19 +1,17 @@
 'use strict'
 
-React      = require 'react'
-ReactDOM   = require 'react-dom'
-classNames = require 'classnames'
-template   = require './account-info.template'
+React    = require 'react'
+ReactDOM = require 'react-dom'
+template = require './account-info.template'
 
 element =
   propTypes:
-    username: React.PropTypes.string
-    email   : React.PropTypes.string
+    data: React.PropTypes.object
     onSubmit: React.PropTypes.func
 
   getInitialState: ->
-    username       : this.props.username
-    email          : this.props.email
+    username       : this.props.data.username
+    email          : this.props.data.email
     currentPassword: ''
     newPassword    : ''
 
@@ -25,6 +23,7 @@ element =
 
   onSubmit: (e) ->
     e.preventDefault()
+
     currentPassword = this.state.currentPassword.trim()
     newPassword     = this.state.newPassword.trim()
 
@@ -35,8 +34,7 @@ element =
     saveDisabled = !this.state.currentPassword.length || !this.state.newPassword.length
 
     template
-      username             : this.state.username
-      email                : this.state.email
+      state                : this.state
       saveDisabled         : saveDisabled
       currentPasswordChange: this.currentPasswordChange
       newPasswordChange    : this.newPasswordChange

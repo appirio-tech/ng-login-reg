@@ -1,9 +1,10 @@
 'use strict'
 
 ctrl =  ->
-  vm          = this
-  vm.username = 'batman666'
-  vm.email    = 'batman@wayneenterprises.com'
+  vm      = this
+  vm.data =
+    username: 'batman666'
+    email   : 'batman@wayneenterprises.com'
 
   vm.onSubmit = (e, data) ->
     vm.submittedData = data

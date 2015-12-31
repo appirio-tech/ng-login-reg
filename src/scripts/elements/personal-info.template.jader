@@ -1,0 +1,22 @@
+header
+  h4 personal info
+
+  hr
+
+main
+  form(onSubmit=onSubmit)
+    h6 name
+
+    label First Name
+
+    input(type="text" placeholder="Enter Name" onChange=currentPasswordChange)
+
+    label Last Name
+
+    input(type="text" placeholder="Enter Name" onChange=newPasswordChange)
+
+    label Organization
+
+    input(type="text" placeholder="Enter Organization" onChange=newPasswordChange)
+
+    button.action(disabled=saveDisabled) save

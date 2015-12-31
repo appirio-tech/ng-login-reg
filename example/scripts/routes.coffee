@@ -34,6 +34,12 @@ config = ($stateProvider) ->
     title       : 'Account Info'
     templateUrl : 'views/account-info.example.html'
 
+  states['PERSONAL_INFO'] =
+    url         : '/personal-info'
+    controller  : 'PersonalInfoExampleController as vm'
+    title       : 'Personal Info'
+    templateUrl : 'views/personal-info.example.html'
+
   states['SSO_LOGIN'] =
     url: '/sso-login/:org'
     templateUrl: 'views/sso-login.example.html'
