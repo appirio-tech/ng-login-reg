@@ -7,16 +7,19 @@ main
   form(onSubmit=onSubmit)
     h6 name
 
-    label First Name
+    .flex
+      div
+        label First Name
 
-    input(type="text" placeholder="Enter Name" onChange=currentPasswordChange)
+        input(type="text" value=state.firstName placeholder="Enter Name" onChange=firstNameChange)
 
-    label Last Name
+      .last-name
+        label Last Name
 
-    input(type="text" placeholder="Enter Name" onChange=newPasswordChange)
+        input(type="text" value=state.lastName placeholder="Enter Name" onChange=lastNameChange)
 
     label Organization
 
-    input(type="text" placeholder="Enter Organization" onChange=newPasswordChange)
+    input(type="text" value=state.organization placeholder="Enter Organization" onChange=organizationChange)
 
     button.action(disabled=saveDisabled) save
