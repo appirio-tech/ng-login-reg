@@ -1,7 +1,6 @@
 'use strict'
 
 React    = require 'react'
-ReactDOM = require 'react-dom'
 template = require './account-info.template'
 
 element =

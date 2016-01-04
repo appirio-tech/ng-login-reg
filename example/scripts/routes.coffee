@@ -28,6 +28,12 @@ config = ($stateProvider) ->
     title       : 'reset'
     templateUrl : 'views/reset.example.html'
 
+  states['ACCOUNT_PAGE'] =
+    url         : '/account-page'
+    controller  : 'AccountPageExampleController as vm'
+    title       : 'Account Page'
+    templateUrl : 'views/account-page.example.html'
+
   states['ACCOUNT_INFO'] =
     url         : '/account-info'
     controller  : 'AccountInfoExampleController as vm'
