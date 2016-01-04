@@ -1,7 +1,7 @@
 'use strict'
 
 React    = require 'react'
-template = require './account-info.template'
+template = require './templates/account-info.template'
 
 element =
   propTypes:
