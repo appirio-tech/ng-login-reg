@@ -1,5 +1,10 @@
 'use strict'
 
+`
+import { Provider } from 'react-redux'
+import store from 'appirio-tech-client-app-layer'
+`
+
 React        = require 'react'
 template     = require './templates/account-page.template'
 AccountInfo  = require './account-info.element'
@@ -15,10 +20,12 @@ element =
     onSubmit: this.props.onSubmit
 
   render: ->
-    template
-      AccountInfo : AccountInfo
-      PersonalInfo: PersonalInfo
-      data        : this.state.data
-      onSubmit    : this.state.onSubmit
+    <Provider store={store}>
+      { template
+        AccountInfo : AccountInfo
+        PersonalInfo: PersonalInfo
+        data        : this.state.data
+        onSubmit    : this.state.onSubmit }
+    </Provider>
 
 module.exports = React.createClass element

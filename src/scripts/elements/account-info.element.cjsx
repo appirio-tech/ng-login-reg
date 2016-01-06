@@ -1,6 +1,6 @@
 'use strict'
 
-React    = require 'react'
+`import React from 'react'`
 template = require './templates/account-info.template'
 
 element =

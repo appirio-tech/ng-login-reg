@@ -1,49 +1,84 @@
 'use strict'
 
-React    = require 'react'
-template = require './templates/personal-info.template'
+`
+import React, { PropTypes } from 'react'
+import {reduxForm} from 'redux-form'
+import template from './templates/personal-info.template'
+import store from 'appirio-tech-client-app-layer'
+`
+fields = [
+  'firstName'
+  'lastName'
+  'organization'
+]
 
-element =
-  propTypes:
-    data: React.PropTypes.object
-    onSubmit: React.PropTypes.func
+PersonalInfo = ({
+  fields: {
+    firstName
+    lastName
+    organization
+  }
+  handleSubmit
+  submitting
+}) ->
+  <div>
+    <pre>
+      { JSON.stringify firstName, null, 2 }
+    </pre>
+    <header>
+      <h4>my info</h4>
+      <hr />
+    </header>
 
-  getInitialState: ->
-    firstName   : this.props.data.firstName
-    lastName    : this.props.data.lastName
-    organization: this.props.data.organization
+    <main>
+      <form>
+        <h6>name</h6>
 
-  firstNameChange: (e) ->
-    this.setState firstName: e.target.value
+        <div className="flex">
+          <div>
+            <label>First Name</label>
+            <input type="text" placeholder="Enter Name" {...firstName}/>
+          </div>
 
-  lastNameChange: (e) ->
-    this.setState lastName: e.target.value
+          <div>
+            <label>Last Name</label>
+            <input type="text" placeholder="Enter Name" {...lastName}/>
+          </div>
+        </div>
 
-  organizationChange: (e) ->
-    this.setState organization: e.target.value
+        <label>Organization</label>
+        <input type="text" placeholder="Enter Organization" {...organization}/>
 
-  onSubmit: (e) ->
-    e.preventDefault()
+        <button disabled={submitting} onClick={handleSubmit}>
+          Submit
+        </button>
 
-    firstName    = this.state.firstName.trim()
-    lastName     = this.state.lastName.trim()
-    organization = this.state.organization.trim()
+      </form>
+    </main>
+  </div>
 
-    if firstName && lastName && organization
-      this.props.onSubmit?(e, this.state)
+PersonalInfo.propTypes =
+  fields: PropTypes.object.isRequired
+  handleSubmit: PropTypes.func.isRequired
+  submitting: PropTypes.bool.isRequired
 
-  render: ->
-    saveDisabled = false
-    saveDisabled ||= !this.state.firstName.length
-    saveDisabled ||= !this.state.lastName.length
-    saveDisabled ||= !this.state.organization.length
+decorateComponentWithForm = reduxForm({
+    form: 'personalinfo'
+    fields
+  })
 
-    template
-      state             : this.state
-      saveDisabled      : saveDisabled
-      firstNameChange   : this.firstNameChange
-      lastNameChange    : this.lastNameChange
-      organizationChange: this.organizationChange
-      onSubmit          : this.onSubmit
+module.exports = decorateComponentWithForm(PersonalInfo)
 
-module.exports = React.createClass element
+
+
+
+
+
+
+
+
+
+
+
+
+

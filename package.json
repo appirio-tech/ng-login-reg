@@ -6,9 +6,9 @@
     "appirio-tech-webpack-config": "0.x.x"
   },
   "scripts": {
-    "dev": "webpack-dev-server -d --colors",
-    "clean": "rm -r dist",
-    "build": "webpack --config webpack.config.js; cp example/index.html dist/"
+    "example": "webpack-dev-server -d --progress --colors",
+    "dev": "webpack-dev-server -d --progress --colors --dev",
+    "build": "webpack --bail --progress -p --build"
   },
   "dependencies": {
     "appirio-tech-ng-ui-components": "2.x.x",
