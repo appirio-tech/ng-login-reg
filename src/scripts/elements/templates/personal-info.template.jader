@@ -1,0 +1,25 @@
+header
+  h4 my info
+
+  hr
+
+main
+  form(onSubmit=onSubmit)
+    h6 name
+
+    .flex
+      div
+        label First Name
+
+        input(type="text" value=state.firstName placeholder="Enter Name" onChange=firstNameChange)
+
+      .last-name
+        label Last Name
+
+        input(type="text" value=state.lastName placeholder="Enter Name" onChange=lastNameChange)
+
+    label Organization
+
+    input(type="text" value=state.organization placeholder="Enter Organization" onChange=organizationChange)
+
+    button.action(disabled=saveDisabled) save
