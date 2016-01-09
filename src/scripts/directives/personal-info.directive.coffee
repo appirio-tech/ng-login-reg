@@ -1,6 +1,6 @@
 'use strict'
 
-personalInfo = require '../elements/personal-info.element'
+personalInfo = require '../elements/personal-info/personal-info.element'
 
 directive = (reactDirective) ->
   reactDirective personalInfo

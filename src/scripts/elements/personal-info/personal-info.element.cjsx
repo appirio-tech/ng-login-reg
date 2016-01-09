@@ -1,43 +1,31 @@
 'use strict'
 
 `
-import React, { PropTypes } from 'react'
-import {reduxForm} from 'redux-form'
-import template from './templates/personal-info.template'
-import store from 'appirio-tech-client-app-layer'
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import template from './personal-info.template'
 `
-fields = [
-  'firstName'
-  'lastName'
-  'organization'
-]
 
-PersonalInfo = ({
-  fields: {
-    firstName
-    lastName
-    organization
-  }
+PersonalInfo = ({ 
+  fields: { firstName, lastName, organization }
   handleSubmit
   submitting
 }) ->
   <div>
-    <pre>
-      { JSON.stringify firstName, null, 2 }
-    </pre>
     <header>
       <h4>my info</h4>
       <hr />
     </header>
 
     <main>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h6>name</h6>
 
         <div className="flex">
           <div>
             <label>First Name</label>
             <input type="text" placeholder="Enter Name" {...firstName}/>
+            {firstName.touched && firstName.error && <div>{firstName.error}</div>}
           </div>
 
           <div>
@@ -49,7 +37,7 @@ PersonalInfo = ({
         <label>Organization</label>
         <input type="text" placeholder="Enter Organization" {...organization}/>
 
-        <button disabled={submitting} onClick={handleSubmit}>
+        <button disabled={submitting}>
           Submit
         </button>
 
@@ -62,12 +50,7 @@ PersonalInfo.propTypes =
   handleSubmit: PropTypes.func.isRequired
   submitting: PropTypes.bool.isRequired
 
-decorateComponentWithForm = reduxForm({
-    form: 'personalinfo'
-    fields
-  })
-
-module.exports = decorateComponentWithForm(PersonalInfo)
+module.exports = connect()(PersonalInfo)
 
 
 
