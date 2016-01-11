@@ -9,6 +9,7 @@ AccountPageElement = ->
     <aside>
       <ul>
         <li><button className="clean">account info</button></li>
+        {# <li><button className="clean">personal info</button></li> }
       </ul>
     </aside>
 
@@ -16,6 +17,10 @@ AccountPageElement = ->
       <account-info>
         <AccountInfo />
       </account-info>
+
+      {# <personal-info> }
+      {#   <PersonalInfo /> }
+      {# </personal-info> }
     </main>
   </div>
 

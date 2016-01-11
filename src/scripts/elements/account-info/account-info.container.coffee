@@ -1,31 +1,32 @@
 'use strict'
 
 `
-import React, { PropTypes, createElement } from 'react'
+import { PropTypes, createElement } from 'react'
 import { reduxForm } from 'redux-form'
 import AccountInfo from './account-info.element'
 import { updatePassword } from 'appirio-tech-client-app-layer'
 `
+
 fields = [
   'currentPassword'
   'password'
 ]
 
-Container = React.createClass
-  propTypes:
-    fields: PropTypes.object.isRequired
-    handleSubmit: PropTypes.func.isRequired
-    submitting: PropTypes.bool.isRequired
+submit = (values, dispatch) ->
+  dispatch updatePassword(values)
 
-  submit: (values, dispatch) ->
-    this.props.dispatch updatePassword(values)
-    Promise.resolve(null)
+  Promise.resolve {}
 
-  render: ->
-    createElement AccountInfo,
-      fields: this.props.fields
-      submitting: this.props.submitting
-      handleSubmit: this.props.handleSubmit(this.submit)
+Container = (props) ->
+  createElement AccountInfo,
+    fields: props.fields
+    submitting: props.submitting
+    handleSubmit: props.handleSubmit(submit)
+
+Container.propTypes =
+  fields: PropTypes.object.isRequired
+  handleSubmit: PropTypes.func.isRequired
+  submitting: PropTypes.bool.isRequired
 
 formProps =
   form: 'accountInfo'
