@@ -11,7 +11,8 @@
     "build": "webpack --bail --progress -p --build"
   },
   "dependencies": {
-    "appirio-tech-ng-ui-components": "2.x.x",
-    "appirio-tech-ng-auth": "4.x.x"
+    "appirio-tech-client-app-layer": "0.0.5",
+    "appirio-tech-ng-auth": "4.x.x",
+    "appirio-tech-ng-ui-components": "2.x.x"
   }
 }
