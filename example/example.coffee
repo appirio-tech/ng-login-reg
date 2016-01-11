@@ -7,7 +7,17 @@ exampleNav = require './nav.jade'
 
 document.getElementById('example-nav').innerHTML = exampleNav()
 
-views = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
+requireContextFiles = (files) ->
+  paths = files.keys()
+
+  for path in paths
+    files path
+
+views       = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
+controllers = require.context './scripts/controllers/', true, /^(.*\.(coffee$))[^.]*$/igm
+
+requireContextFiles controllers
+
 viewPaths = views.keys()
 
 templateCache = ($templateCache) ->
