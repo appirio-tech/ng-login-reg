@@ -41,17 +41,3 @@ formProps =
   fields: fields
 
 module.exports = reduxForm(formProps, mapStateToProps)(PersonalInfo)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

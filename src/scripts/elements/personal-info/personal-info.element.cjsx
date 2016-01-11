@@ -3,7 +3,6 @@
 `
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import template from './personal-info.template'
 `
 
 PersonalInfo = ({ 
@@ -51,17 +50,3 @@ PersonalInfo.propTypes =
   submitting: PropTypes.bool.isRequired
 
 module.exports = connect()(PersonalInfo)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

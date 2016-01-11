@@ -32,17 +32,3 @@ formProps =
   fields: fields
 
 module.exports = reduxForm(formProps)(Container)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
