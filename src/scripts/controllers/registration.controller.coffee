@@ -15,7 +15,7 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
     vm.loading = true
 
     # Get the absolute url to our the confirmation page
-    afterActivationURL = $state.href('login', [], { absolute: true })
+    afterActivationURL = $state.href('login', { activated: true }, { absolute: true })
 
     registerOptions =
       handle            : vm.username
