@@ -23,7 +23,7 @@ SSOLoginController = ($state, $stateParams, $window, AuthService) ->
 
     failure = (err) ->
       vm.loading = false
-      vm.error   = err
+      vm.error   = err.message
 
     AuthService.getSSOProvider(vm.emailOrHandle).then(success).catch(failure)
 
