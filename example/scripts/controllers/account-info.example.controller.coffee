@@ -1,8 +1,11 @@
 'use strict'
 
+store = require('appirio-tech-client-app-layer').default
+
 ctrl =  ->
-  vm      = this
-  vm.data =
+  vm       = this
+  vm.store = store
+  vm.data  =
     username: 'batman666'
     email   : 'batman@wayneenterprises.com'
 
