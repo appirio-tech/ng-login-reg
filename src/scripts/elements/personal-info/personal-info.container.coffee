@@ -19,7 +19,9 @@ PersonalInfo = React.createClass
     submitting: PropTypes.bool.isRequired
 
   componentWillMount: ->
-    this.props.dispatch(loadProfile(40141336))
+    { dispatch, userId } = this.props
+
+    dispatch loadProfile(userId)
 
   submit: (values, dispatch) ->
     this.props.dispatch updateProfile(values)
@@ -34,6 +36,7 @@ PersonalInfo = React.createClass
 mapStateToProps = (state) ->
   userId = state.user.id
 
+  userId: userId
   initialValues: state.entities.profiles[userId]
 
 formProps =
