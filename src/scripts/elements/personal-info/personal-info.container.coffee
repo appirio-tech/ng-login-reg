@@ -1,11 +1,11 @@
 'use strict'
 
-`
-import React, { PropTypes, createElement } from 'react'
-import { reduxForm } from 'redux-form'
-import PersonalInfoElement from './personal-info.element'
-import { loadProfile, updatePassword } from 'appirio-tech-client-app-layer'
-`
+React = require 'react'
+{ PropTypes, createElement } = React
+{ reduxForm } = require 'redux-form'
+PersonalInfoElement = require './personal-info.element'
+{ loadProfile, updatePassword } = require 'appirio-tech-client-app-layer'
+
 fields = [
   'firstName'
   'lastName'

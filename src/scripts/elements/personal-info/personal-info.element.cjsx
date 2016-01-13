@@ -1,9 +1,8 @@
 'use strict'
 
-`
-import React, { PropTypes, Component } from 'react'
-import { connect } from 'react-redux'
-`
+React = require 'react'
+{ PropTypes, Component } = React
+{ connect } = require 'react-redux'
 
 PersonalInfo = ({ 
   fields: { firstName, lastName, organization }
@@ -49,4 +48,4 @@ PersonalInfo.propTypes =
   handleSubmit: PropTypes.func.isRequired
   submitting: PropTypes.bool.isRequired
 
-module.exports = connect()(PersonalInfo)
+module.exports = PersonalInfo

@@ -8,13 +8,6 @@ else
 ctrl =  ->
   vm       = this
   vm.store = store
-  vm.data  =
-    firstName   : 'bat'
-    lastName    : 'batman'
-    organization: 'Wayne Enterprises'
-
-  vm.onSubmit = (e, data) ->
-    vm.submittedData = data
 
   vm
 

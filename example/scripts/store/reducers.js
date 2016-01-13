@@ -5,9 +5,9 @@ import { combineReducers } from 'redux'
 const defaultState = {
   profiles: {
     40141336: {
-      firstName: 'Andrew',
-      lastName: 'Slebie',
-      organization: 'Muhself'
+      firstName: 'Bat',
+      lastName: 'Man',
+      organization: 'The Cave'
     }
   }
 }

@@ -8,12 +8,6 @@ else
 ctrl =  ->
   vm       = this
   vm.store = store
-  vm.data  =
-    username: 'batman666'
-    email   : 'batman@wayneenterprises.com'
-
-  vm.onSubmit = (e, data) ->
-    vm.submittedData = data
 
   vm
 

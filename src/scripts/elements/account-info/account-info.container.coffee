@@ -1,11 +1,9 @@
 'use strict'
 
-`
-import { PropTypes, createElement } from 'react'
-import { reduxForm } from 'redux-form'
-import AccountInfo from './account-info.element'
-import { updatePassword } from 'appirio-tech-client-app-layer'
-`
+{ PropTypes, createElement } = require 'react'
+{ reduxForm } = require 'redux-form'
+AccountInfo = require './account-info.element'
+{ updatePassword } = require 'appirio-tech-client-app-layer'
 
 fields = [
   'currentPassword'
