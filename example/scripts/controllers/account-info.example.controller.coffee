@@ -1,6 +1,9 @@
 'use strict'
 
-store = require('appirio-tech-client-app-layer').default
+if process.env.ENV == 'MOCK'
+  store = require('../store/mock-store').default
+else
+  store = require('appirio-tech-client-app-layer').default
 
 ctrl =  ->
   vm       = this
