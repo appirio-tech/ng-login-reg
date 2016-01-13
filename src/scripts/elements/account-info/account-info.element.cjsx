@@ -2,7 +2,6 @@
 
 React = require 'react'
 { PropTypes, Component } = React
-{ connect } = require 'react-redux'
 
 AccountInfo = ({ 
   fields: { currentPassword, password }
