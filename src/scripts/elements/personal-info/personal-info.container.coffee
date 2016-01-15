@@ -4,7 +4,7 @@ React = require 'react'
 { PropTypes, createElement } = React
 { reduxForm } = require 'redux-form'
 PersonalInfoElement = require './personal-info.element'
-{ loadProfile, updatePassword } = require 'appirio-tech-client-app-layer'
+{ loadProfile } = require 'appirio-tech-client-app-layer'
 
 fields = [
   'firstName'
@@ -19,9 +19,9 @@ PersonalInfo = React.createClass
     submitting: PropTypes.bool.isRequired
 
   componentWillMount: ->
-    { dispatch, userId } = this.props
+    { loadProfile, userId } = this.props
 
-    dispatch loadProfile(userId)
+    loadProfile userId
 
   submit: (values, dispatch) ->
     this.props.dispatch updateProfile(values)
@@ -43,4 +43,8 @@ formProps =
   form: 'personalInfo'
   fields: fields
 
-module.exports = reduxForm(formProps, mapStateToProps)(PersonalInfo)
+actionsToBind = {
+  loadProfile
+}
+
+module.exports = reduxForm(formProps, mapStateToProps, actionsToBind)(PersonalInfo)
