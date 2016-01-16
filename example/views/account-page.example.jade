@@ -1,5 +1,2 @@
-p Account Submitted Data: {{ vm.saveAccountInfoData }}
-
-p Personal Submitted Data: {{ vm.savePersonalInfoData }}
-
-account-page.light-bg(data="vm.data" on-submit="vm.onSubmit")
+.light-bg(style="padding:20px")
+  account-page(store="vm.store")

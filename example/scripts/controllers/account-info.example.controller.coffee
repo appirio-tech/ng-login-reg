@@ -1,13 +1,10 @@
 'use strict'
 
-ctrl =  ->
-  vm      = this
-  vm.data =
-    username: 'batman666'
-    email   : 'batman@wayneenterprises.com'
+store = require '../store'
 
-  vm.onSubmit = (e, data) ->
-    vm.submittedData = data
+ctrl =  ->
+  vm       = this
+  vm.store = store
 
   vm
 

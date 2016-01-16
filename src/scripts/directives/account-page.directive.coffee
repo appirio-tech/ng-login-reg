@@ -1,9 +1,10 @@
 'use strict'
 
-accountPage = require '../elements/account-page.element'
+Provider = require '../elements/provider'
+AccountPage = require '../elements/account-page/account-page.element'
 
 directive = (reactDirective) ->
-  reactDirective accountPage
+  reactDirective Provider(AccountPage)
 
 directive.$inject = ['reactDirective']
 

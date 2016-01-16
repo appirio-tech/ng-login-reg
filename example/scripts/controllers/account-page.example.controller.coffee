@@ -1,25 +1,10 @@
 'use strict'
 
+store = require '../store'
+
 ctrl = ($scope) ->
-  vm      = this
-  vm.data =
-    username    : 'batman666'
-    email       : 'batman@wayneenterprises.com'
-    firstName   : 'bat'
-    lastName    : 'batman'
-    organization: 'Wayne Enterprises'
-
-  vm.onSubmit =
-    accountInfo: (e, data) ->
-      vm.saveAccountInfoData = data
-
-      $scope.$apply()
-
-    personalInfo: (e, data) ->
-      vm.savePersonalInfoData = data
-
-      $scope.$apply()
-
+  vm       = this
+  vm.store = store
   vm
 
 ctrl.$inject = ['$scope']

@@ -1,7 +1,9 @@
+require '../src/src'
 require 'appirio-tech-api-schemas'
 require './styles/main.scss'
 require './scripts/example.module'
 require './scripts/routes'
+require 'angular'
 
 exampleNav = require './nav.jade'
 
