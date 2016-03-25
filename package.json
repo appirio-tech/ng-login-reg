@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "appirio-tech-client-app-layer": "0.0.x",
-    "appirio-tech-ng-auth": "4.x.x",
+    "appirio-tech-ng-auth": "5.x.x",
     "appirio-tech-ng-ui-components": "2.x.x"
   }
 }

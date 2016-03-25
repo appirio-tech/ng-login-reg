@@ -1,6 +1,6 @@
 'use strict'
 
-LoginController = ($rootScope, $location, $state, $stateParams, AuthService, UserV3Service) ->
+LoginController = ($rootScope, $location, $state, $scope, $stateParams, AuthService, UserV3Service) ->
   vm           = this
   vm.title     = 'Login'
   vm.username  = ''
@@ -11,25 +11,21 @@ LoginController = ($rootScope, $location, $state, $stateParams, AuthService, Use
   vm.activated = $stateParams.activated
 
   vm.submit = ->
-    vm.error   = false
-    vm.loading = true
-
-    loginOptions =
-      username: vm.username
-      password: vm.password
-      error   : loginFailure
-      success : loginSuccess
-
-    AuthService.login loginOptions
-
-  loginFailure = (error) ->
     vm.error   = true
     vm.loading = false
 
-  loginSuccess = ->
-    vm.error   = false
-    vm.loading = false
+    options =
+      username: vm.username
+      password: vm.password
 
+    AuthService.login(options).then(loginSuccess, loginFailure)
+
+  loginFailure = (error) ->
+    $scope.$apply ->
+      vm.error   = true
+      vm.loading = false
+
+  loginSuccess = ->
     UserV3Service.loadUser().then (currentUser) ->
       urlToken = $location.search()
 
@@ -61,6 +57,7 @@ LoginController.$inject = [
   '$rootScope'
   '$location'
   '$state'
+  '$scope'
   '$stateParams'
   'AuthService'
   'UserV3Service'
