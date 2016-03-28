@@ -8,8 +8,9 @@ ForgotPasswordController = ($stateParams, AuthService) ->
 
   vm.submit = ->
     vm.error   = false
+    email      = encodeURIComponent vm.email
 
-    AuthService.sendResetEmail(vm.email).then(success).catch(failure)
+    AuthService.sendResetEmail(email).then(success).catch(failure)
 
   success = ->
     vm.success = true
