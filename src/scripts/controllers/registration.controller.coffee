@@ -1,6 +1,6 @@
 'use strict'
 
-RegistrationController = ($state, AuthService, UserV3Service) ->
+RegistrationController = ($state, $scope, AuthService, UserV3Service) ->
   vm                        = this
   vm.title                  = 'Register'
   vm.username               = ''
@@ -14,36 +14,28 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
     vm.error = false
     vm.loading = true
 
-    # Get the absolute url to our the confirmation page
-    afterActivationURL = $state.href('login', { activated: true }, { absolute: true })
+    config =
+      param:
+        handle            : vm.username
+        email             : vm.email
+        utmSource         : 'connect'
+        credential        :
+          password        : vm.password
+      options:
+        afterActivationURL: $state.href('login', { activated: true }, { absolute: true })
 
-    registerOptions =
-      handle            : vm.username
-      password          : vm.password
-      email             : vm.email
-      afterActivationURL: afterActivationURL
-
-    UserV3Service.createUser registerOptions, registerSuccess, registerError
+    UserV3Service.createUser(config).then(registerSuccess, registerError)
 
   registerError = (error) ->
-    vm.error        = true
-    vm.loading      = false
-    vm.errorMessage = error.data.result.content
-
-  success = ->
-    $state.go 'view-work-multiple'
+    $scope.$apply ->
+      vm.error        = true
+      vm.loading      = false
+      vm.errorMessage = error.message
 
   registerSuccess = ->
     vm.error   = false
     vm.loading = false
     $state.go 'registration-success'
-
-    loginOptions =
-      username: vm.username
-      password: vm.password
-      success : success
-
-    AuthService.login loginOptions
 
   activate = ->
     vm
@@ -52,6 +44,7 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
 
 RegistrationController.$inject = [
   '$state'
+  '$scope'
   'AuthService'
   'UserV3Service'
 ]
