@@ -32,20 +32,10 @@ RegistrationController = ($state, $scope, AuthService, UserV3Service) ->
       vm.loading      = false
       vm.errorMessage = error.message
 
-  success = ->
-    $state.go 'view-work-multiple'
-
   registerSuccess = ->
     vm.error   = false
     vm.loading = false
     $state.go 'registration-success'
-
-    loginOptions =
-      username: vm.username
-      password: vm.password
-      success : success
-
-    AuthService.login loginOptions
 
   activate = ->
     vm
