@@ -5,6 +5,8 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
   vm.title                  = 'Register'
   vm.username               = ''
   vm.password               = ''
+  vm.firstName              = ''
+  vm.lastName               = ''
   vm.error                  = false
   vm.errorMessage           = 'Error Creating User'
   vm.submit                 = null
@@ -20,6 +22,8 @@ RegistrationController = ($state, AuthService, UserV3Service) ->
     registerOptions =
       handle            : vm.username
       password          : vm.password
+      firstName         : vm.firstName
+      lastName          : vm.lastName
       email             : vm.email
       afterActivationURL: afterActivationURL
 
