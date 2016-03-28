@@ -11,8 +11,8 @@ LoginController = ($rootScope, $location, $state, $scope, $stateParams, AuthServ
   vm.activated = $stateParams.activated
 
   vm.submit = ->
-    vm.error   = true
-    vm.loading = false
+    vm.error   = false
+    vm.loading = true
 
     options =
       username: vm.username
